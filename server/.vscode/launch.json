@@ -1,0 +1,35 @@
+
+{
+    "configurations": [
+        {
+            "name": "Launch via NPM",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        
+        {
+            "name": "Launch via Server",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/server/src/index.ts",
+            "args": [],
+            "stopOnEntry": false,
+            "cwd": "${workspaceFolder}/server",
+            "runtimeExecutable": "node",
+            "runtimeArgs": [
+                "${workspaceFolder}/node_modules/.bin/ts-node",
+                "${workspaceFolder}/server/src/index.ts"
+            ],
+            "env": {
+            }
+        }
+    ]
+}

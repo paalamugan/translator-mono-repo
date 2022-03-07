@@ -1,0 +1,37 @@
+{
+  "name": "translator-mono-repo",
+  "version": "1.0.0",
+  "description": "Translator Mono repo",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "start:client": "cd client && npm run preview",
+    "build:client": "cd client && npm run build",
+    "dev:server": "cd server && npm run dev",
+    "start:server": "cd server && npm run start",
+    "build:server": "cd server && npm run build",
+    "dev": "run-p dev:*",
+    "start": "run-s start:client start:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paalamugan/translator-mono-repo.git"
+  },
+  "keywords": [],
+  "author": "Paalamugan",
+  "license": "ISC",
+  "engines": {
+    "node": ">=17.0.0",
+    "npm": ">=8.0.0"
+  },
+  "workspaces": [
+    "client",
+    "Server"
+  ],
+  "bugs": {
+    "url": "https://github.com/paalamugan/translator-mono-repo/issues"
+  },
+  "homepage": "https://github.com/paalamugan/translator-mono-repo#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
