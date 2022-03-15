@@ -58,8 +58,8 @@ app.use((err: Error | CustomError, _req: Request, res: Response, _next: NextFunc
  **********************************************************************************/
 
 // Set views dir
-const viewsDir = path.join(__dirname, 'views');
-app.set('views', viewsDir);
+// const viewsDir = path.join(__dirname, 'views');
+// app.set('views', viewsDir);
 
 // Set static dir
 const staticDir = path.join(__dirname, 'public');
@@ -67,7 +67,7 @@ app.use(express.static(staticDir));
 
 // Serve index.html file
 app.get('*', (_: Request, res: Response) => {
-    res.sendFile('index.html', {root: viewsDir});
+    res.sendFile('index.html', { root: staticDir });
 });
 
 
