@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 // Cross-Origin-Validation Middleware
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000'],
 }));
 // Show routes called in console during development
 if (process.env.NODE_ENV === 'development') {
@@ -35,7 +35,9 @@ if (process.env.NODE_ENV === 'development') {
 
 // Security (helmet recommended in express docs)
 if (process.env.NODE_ENV === 'production') {
-    app.use(helmet());
+    app.use(helmet({
+        contentSecurityPolicy: false,
+    }));
 }
 
 
@@ -66,7 +68,7 @@ app.use((err: Error | CustomError, _req: Request, res: Response, _next: NextFunc
 // app.set('views', viewsDir);
 
 // Set static dir
-const staticDir = path.join(__dirname, 'public');
+const staticDir = path.join(__dirname, '..', '..', 'client', 'build');
 app.use(express.static(staticDir));
 
 // Serve index.html file

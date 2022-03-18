@@ -6,8 +6,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
 import commandLineArgs from 'command-line-args';
-
-
+import logger from 'logger';
 
 (() => {
     // Setup command line options
@@ -26,11 +25,14 @@ import commandLineArgs from 'command-line-args';
         path: path.join(__dirname, `env/${options.env}.env`),
     });
 
-    if (!result2.parsed?.MICROSOFT_TRANSLATE_APP_ID) {
-        throw new Error(`
-            "MICROSOFT_TRANSLATE_APP_ID" is not defined in the path "src/pre-start/env/${options.env}.env" file.
-        `);
-    }
+    import('../config').then((config) => {
+        if (!config.default.microsoftTranslateAppId) {
+            throw new Error(`"MICROSOFT_TRANSLATE_APP_ID" is not defined in the path "src/pre-start/env/${options.env}.env" file.`);
+        }
+    }).catch((err: Error) => {
+        logger.err(err, true);
+        process.exit(1);
+    });
 
     if (result2.error) {
         throw result2.error;

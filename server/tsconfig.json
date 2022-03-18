@@ -79,7 +79,10 @@
       ],
       "@config/*": [
         "src/config/*"
-      ]
+      ],
+      "logger": [
+        "src/logger"
+      ],
     },
     "useUnknownInCatchVariables": false
   },

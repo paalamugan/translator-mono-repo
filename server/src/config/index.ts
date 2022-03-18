@@ -1,7 +1,7 @@
 export interface IConfig {
-    appId: string,
+    microsoftTranslateAppId: string,
 }
 
 export default {
-    appId: process.env.MICROSOFT_TRANSLATE_APP_ID,
+    microsoftTranslateAppId: process.env.MICROSOFT_TRANSLATE_APP_ID,
 } as IConfig

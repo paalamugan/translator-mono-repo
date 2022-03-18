@@ -9,4 +9,14 @@ export default defineConfig({
   css: {
     postcss: postcss,
   },
+  build: {
+    outDir: 'build'
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+      }
+    }
+  }
 });

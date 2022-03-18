@@ -32,8 +32,13 @@ export const detectLanguage = async(text = '') => {
         throw new TranslatorError('Translate "text" value is missing.');
     }
 
+    const queryParams = new URLSearchParams({
+        appId: config.microsoftTranslateAppId,
+        text
+    });
+
     let languageCode = await newRequest(
-        `https://api.microsofttranslator.com/V2/Ajax.svc/Detect?appId=${config.appId}&text=${text}`
+        `https://api.microsofttranslator.com/V2/Ajax.svc/Detect?${queryParams.toString()}`
     ) as string;
     
     languageCode = languageCode.replace(/"/g, '');
@@ -56,7 +61,7 @@ export const getTranslatedLanguage = async (text: string, from: string, to: stri
     }
 
     const queryParams = new URLSearchParams({
-        appId: config.appId,
+        appId: config.microsoftTranslateAppId,
         text,
         from: from || detectedLang,
         to
@@ -66,7 +71,7 @@ export const getTranslatedLanguage = async (text: string, from: string, to: stri
         const translatedText = await newRequest(
             `https://api.microsofttranslator.com/V2/Ajax.svc/Translate?${queryParams.toString()}`
         ) as string;
-        
+
         if (translatedText.includes('ArgumentException:')) {
             throw new TranslatorError(translatedText);
         }

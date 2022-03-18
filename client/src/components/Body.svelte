@@ -1,7 +1,7 @@
 <script lang="ts">
   import debounce from "lodash/debounce";
   import { LANG } from "@app/utils/constant";
-  import { getTranslatedData } from "@app/utils/lib";
+  import { getTranslatedData } from "@app/lib";
   import TranslatedTextContainer from "@app/components/TranslatedTextContainer";
   import TranslatedtTextInput from "@app/components/TranslateTextInput";
   import TranslateSelectOption from "@app/components/TranslateSelectOption";
@@ -32,7 +32,7 @@
         const data = await getTranslatedData(selectedFromLang.value, toLang.value, translateText);
 
         const detectedLangText = LANG[data.detectedLang];
-        if (!detectedLangLabel && detectedLangText) {
+        if (!detectedLangLabel && data.detectedLang) {
           selectedFromLang.label = `${selectedFromLang.label} (${detectedLangText})`;
           detectedLangLabel = detectedLangText;
         }

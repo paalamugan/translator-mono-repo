@@ -1,13 +1,13 @@
 {
 	"folders": [
 		{
-			"name": "Client",
+			"name": "client",
 			"path": "client"
 		},
 		{
-			"name": "Server",
+			"name": "server",
 			"path": "server"
-		}
+		},
 	],
 	"settings": {
 		"restoreTerminals.terminals": [
@@ -41,11 +41,11 @@
 				"configurations": [
 				  {
 					"name": "Launch via Client",
-					"folder": "Client"
+					"folder": "client"
 				  },
 				  {
 					"name": "Launch via Server",
-					"folder": "Server"
+					"folder": "server"
 				  }
 				]
 			}

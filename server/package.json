@@ -2,12 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/ts-node build.ts",
+    "build": "ts-node build.ts",
     "lint": "eslint . --ext .ts",
     "start": "node -r module-alias/register ./dist --env=production",
     "dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
-    "test:no-reloading": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./spec"
+    "test:no-reloading": "ts-node -r tsconfig-paths/register ./spec"
   },
   "nodemonConfig": {
     "watch": [
@@ -26,7 +26,8 @@
     "@shared": "dist/shared",
     "@server": "dist/server",
     "@routes": "dist/routes",
-    "@config": "dist/config"
+    "@config": "dist/config",
+    "logger": "dist/logger"
   },
   "dependencies": {
     "command-line-args": "^5.2.1",
