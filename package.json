@@ -10,7 +10,8 @@
     "start:client": "cd client && npm run preview",
     "start:server": "cd server && npm run start",
     "dev": "run-p dev:*",
-    "start": "run-s build:* start:server"
+    "start": "run-s build start:server",
+    "build": "run-s build:*"
   },
   "repository": {
     "type": "git",
