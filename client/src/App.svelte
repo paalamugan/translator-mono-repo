@@ -1,14 +1,11 @@
 <script lang="ts">
+  import Header from "./components/Header.svelte";
+  import Body from "./components/Body.svelte";
 </script>
 
-<main>
-  <div class="pt-4 pb-12 text-2xl">
-    <h1>Translator Application</h1>
+<main class="container m-auto">
+  <div class="flex flex-col p-10 bg-gray-100 text-gray-800">
+    <Header />
+    <Body />
   </div>
 </main>
-
-<style lang="postcss">
-  main {
-    @apply grid place-items-center h-full;
-  }
-</style>

@@ -9,7 +9,30 @@
 			"path": "server"
 		}
 	],
-	"settings": {},
+	"settings": {
+		"restoreTerminals.terminals": [
+		  {
+			"splitTerminals": [
+			  {
+				"name": "client",
+				"commands": [
+				  "cd .." , "cd client"
+				]
+			  }
+			]
+		  },
+		  {
+			"splitTerminals": [
+			  {
+				"name": "server",
+				"commands": [
+				  "cd .." , "cd server"
+				]
+			  }
+			]
+		  }
+		]
+	},
 	"launch": {
 		"configurations": [],
 		"compounds": [
@@ -17,12 +40,12 @@
 				"name": "Launch Server & Client",
 				"configurations": [
 				  {
-					"folder": "Client",
-					"name": "Launch via Client"
+					"name": "Launch via Client",
+					"folder": "Client"
 				  },
 				  {
-					"folder": "Server",
-					"name": "Launch via Server"
+					"name": "Launch via Server",
+					"folder": "Server"
 				  }
 				]
 			}

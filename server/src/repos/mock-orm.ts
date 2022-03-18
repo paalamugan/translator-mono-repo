@@ -9,7 +9,7 @@ const dbFilePath = 'src/repos/database.json';
  * 
  * @returns 
  */
-function openDb(): Promise<Record<string, any>> {
+function openDb(): Promise<any> {
     return jsonfile.readFile(dbFilePath);
 }
 

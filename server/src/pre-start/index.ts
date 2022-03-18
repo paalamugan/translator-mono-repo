@@ -25,6 +25,13 @@ import commandLineArgs from 'command-line-args';
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         path: path.join(__dirname, `env/${options.env}.env`),
     });
+
+    if (!result2.parsed?.MICROSOFT_TRANSLATE_APP_ID) {
+        throw new Error(`
+            "MICROSOFT_TRANSLATE_APP_ID" is not defined in the path "src/pre-start/env/${options.env}.env" file.
+        `);
+    }
+
     if (result2.error) {
         throw result2.error;
     }

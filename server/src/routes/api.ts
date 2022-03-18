@@ -1,12 +1,7 @@
-import { Router } from 'express';
-import userRouter from './user-router';
+import { default as v1Router } from './v1';
 
+export const apiRouterV1 = v1Router;
 
-// Export the base-router
-const baseRouter = Router();
-
-// Setup routers
-baseRouter.use('/users', userRouter);
-
-// Export default.
-export default baseRouter;
+export default {
+    v1: apiRouterV1
+}

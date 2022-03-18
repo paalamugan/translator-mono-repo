@@ -3,7 +3,6 @@ import { getRandomInt } from '@shared/functions';
 import orm from './mock-orm';
 
 
-
 /**
  * Get one user.
  * 
@@ -12,7 +11,8 @@ import orm from './mock-orm';
  */
 async function getOne(email: string): Promise<IUser | null> {
     const db = await orm.openDb();
-    for (const user of db.users) {
+    const users: IUser[] = db.users;
+    for (const user of users) {
         if (user.email === email) {
             return user;
         }
@@ -44,7 +44,8 @@ async function persists(id: number): Promise<boolean> {
  */
 async function getAll(): Promise<IUser[]> {
     const db = await orm.openDb();
-    return db.users;
+    const users: IUser[] = db.users;
+    return users;
 }
 
 
@@ -55,9 +56,10 @@ async function getAll(): Promise<IUser[]> {
  * @returns 
  */
 async function add(user: IUser): Promise<void> {
-    const db = await orm.openDb();
+    const db = await orm.openDb() as Record<string, any>;
+    const users: IUser[] = db.users;
     user.id = getRandomInt();
-    db.users.push(user);
+    users.push(user);
     return orm.saveDb(db);
 }
 
@@ -69,7 +71,7 @@ async function add(user: IUser): Promise<void> {
  * @returns 
  */
 async function update(user: IUser): Promise<void> {
-    const db = await orm.openDb();
+    const db = await orm.openDb() as Record<string, any>;
     for (let i = 0; i < db.users.length; i++) {
         if (db.users[i].id === user.id) {
             db.users[i] = user;
@@ -86,10 +88,11 @@ async function update(user: IUser): Promise<void> {
  * @returns 
  */
 async function deleteOne(id: number): Promise<void> {
-    const db = await orm.openDb();
-    for (let i = 0; i < db.users.length; i++) {
-        if (db.users[i].id === id) {
-            db.users.splice(i, 1);
+    const db = await orm.openDb() as Record<string, any>;
+    const users = db.users as IUser[];
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id === id) {
+            users.splice(i, 1);
             return orm.saveDb(db);
         }
     }

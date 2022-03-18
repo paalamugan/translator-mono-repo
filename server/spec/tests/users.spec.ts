@@ -6,7 +6,7 @@ import app from '@server';
 import userRepo from '@repos/user-repo';
 import User, { IUser } from '@models/user-model';
 import { pErr } from '@shared/functions';
-import { p as userPaths } from '@routes/user-router';
+import { paths as userPaths } from '@routes/v1/user-router';
 import { ParamMissingError, UserNotFoundError } from '@shared/errors';
 
 type TReqBody = string | object | undefined;
@@ -14,7 +14,7 @@ type TReqBody = string | object | undefined;
 
 describe('user-router', () => {
 
-    const usersPath = '/api/users';
+    const usersPath = '/api/v1/users';
     const getUsersPath = `${usersPath}${userPaths.get}`;
     const addUsersPath = `${usersPath}${userPaths.add}`;
     const updateUserPath = `${usersPath}${userPaths.update}`;
@@ -50,7 +50,7 @@ describe('user-router', () => {
                     pErr(err);
                     expect(res.status).toBe(OK);
                     // Caste instance-objects to 'User' objects
-                    const respUsers = res.body.users;
+                    const respUsers = res.body.users as IUser[];
                     const retUsers: IUser[] = respUsers.map((user: IUser) => {
                         return User.copy(user);
                     });
