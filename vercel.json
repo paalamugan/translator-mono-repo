@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "name": "translator-application",
+    "builds": [
+        {
+            "src": "server/dist/server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/server/dist/server.js"
+        }
+    ]
+}
