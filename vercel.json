@@ -1,16 +1,19 @@
 {
     "version": 2,
-    "name": "translator-application",
+    "env": {
+        "NODE_ENV": "production"
+    },
     "builds": [
         {
-            "src": "server/dist/server.js",
+            "src": "server/src/index.ts",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/server/dist/server.js"
+          "src": "/(.*)",
+          "dest": "server/src/index.ts",
+          "methods": ["GET", "POST", "PUT", "DELETE"]
         }
-    ]
+      ]
 }

@@ -1,3 +1,5 @@
+import 'module-alias/register';
+
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
