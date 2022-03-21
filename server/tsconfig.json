@@ -88,15 +88,10 @@
   },
   "include": [
     "src/**/*.ts",
-    "spec/**/*.ts"
+    "spec/**/*.ts",
+    "src/index.ts"
   ],
   "exclude": [
     "src/public/"
-  ],
-  "ts-node": {
-    // Do not forget to `npm i -D tsconfig-paths`
-    "require": [
-      "tsconfig-paths/register"
-    ]
-  }
+  ]
 }

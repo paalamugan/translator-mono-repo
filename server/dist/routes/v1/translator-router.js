@@ -26,7 +26,7 @@ exports.paths = {
 };
 router.post(exports.paths.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { text, from, to } = req.body;
-    const result = yield (0, translator_service_1.getTranslatedLanguage)(text, from, to);
+    const result = yield (0, translator_service_1.getTranslatedLanguage)((text || '').trim(), from, to);
     return res.status(OK).json(result);
 }));
 router.post(exports.paths.detect, (req, res) => __awaiter(void 0, void 0, void 0, function* () {

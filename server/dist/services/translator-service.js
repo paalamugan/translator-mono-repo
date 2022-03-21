@@ -61,7 +61,7 @@ const getTranslatedLanguage = (text, from, to) => __awaiter(void 0, void 0, void
     }
     const queryParams = new URLSearchParams({
         appId: index_1.default.microsoftTranslateAppId,
-        text,
+        text: text.trim(),
         from: from || detectedLang,
         to
     });
