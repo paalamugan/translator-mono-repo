@@ -26,8 +26,8 @@ const newRequest = (url: string) => {
         httpRequest.end();
     });
 }
-export const detectLanguage = async(text = '') => {
 
+export const detectLanguage = async(text = '') => {
     if (!text) {
         throw new TranslatorError('Translate "text" value is missing.');
     }
@@ -62,7 +62,7 @@ export const getTranslatedLanguage = async (text: string, from: string, to: stri
 
     const queryParams = new URLSearchParams({
         appId: config.microsoftTranslateAppId,
-        text,
+        text: text.trim(),
         from: from || detectedLang,
         to
     });
@@ -75,7 +75,6 @@ export const getTranslatedLanguage = async (text: string, from: string, to: stri
         if (translatedText.includes('ArgumentException:')) {
             throw new TranslatorError(translatedText);
         }
-
         return { 
             translatedText: translatedText?.replace(/"/g, '').trim() || '', 
             text, 

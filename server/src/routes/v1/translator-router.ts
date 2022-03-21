@@ -16,7 +16,7 @@ export const paths = {
 
 router.post(paths.default, async (req: Request, res: Response) => {
     const { text, from, to } = req.body as { text: string, from: string, to: string };
-    const result = await getTranslatedLanguage(text, from, to);
+    const result = await getTranslatedLanguage((text || '').trim(), from, to);
     return res.status(OK).json(result);
 });
 
