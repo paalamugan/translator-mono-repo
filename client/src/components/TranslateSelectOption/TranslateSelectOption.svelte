@@ -9,7 +9,9 @@
   export let onClear: (event: any) => void = () => {};
 
   let getOptionLabel = (option) => {
-    return option.value ? option.label : `${option.label} ${detectedLangText ? `(${detectedLangText})` : ""}`;
+    return option.value
+      ? option.label
+      : `${option.label} ${detectedLangText && !/\(.*\)/.test(option.label) ? `(${detectedLangText})` : ""}`;
   };
 </script>
 

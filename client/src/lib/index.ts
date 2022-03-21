@@ -32,3 +32,29 @@ export const getTranslatedData = async (from = "", to = "", text = "") => {
     };
   }
 };
+
+export const onTranslateSpeech = ({ text, lang, onstart = () => {}, onend = () => {}, onerror = () => {} }) => {
+  let speechSynthesis = window.speechSynthesis;
+  if (!speechSynthesis) {
+    console.error("speechSynthesis is not supported");
+    return;
+  }
+  
+  let utterance = new SpeechSynthesisUtterance();
+  utterance.lang = lang;
+  utterance.text = text;
+  utterance.volume = 1;
+
+  utterance.onstart = onstart;
+  utterance.onend = onend;
+  utterance.onerror = onerror;
+
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
+
+  return {
+    cancel: () => {
+      speechSynthesis.cancel();
+    }
+  };
+}

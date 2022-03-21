@@ -11,8 +11,8 @@
     label: LANG[key],
   }));
 
-  const langFromLists = langLists.slice();
-  const langToLists = langLists.slice(1);
+  const langFromLists = [...langLists.slice()];
+  const langToLists = [...langLists.slice(1)];
 
   let selectedFromLang = langFromLists[0];
   let selectedToLang = null;
