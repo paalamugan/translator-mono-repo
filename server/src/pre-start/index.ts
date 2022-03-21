@@ -6,7 +6,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
 import commandLineArgs from 'command-line-args';
-import logger from 'jet-logger';
+import logger from '@logger';
 
 (() => {
     // Setup command line options
@@ -14,7 +14,7 @@ import logger from 'jet-logger';
         {
             name: 'env',
             alias: 'e',
-            defaultValue: 'development',
+            defaultValue: (process.env.NODE_ENV || 'development').trim(),
             type: String,
         },
     ]);

@@ -47,6 +47,11 @@ if (process.env.NODE_ENV === 'production') {
  *                         API routes and error handling
  **********************************************************************************/
 
+// Health check
+app.get('/healthcheck', (_: Request, res: Response) => {
+    res.send('Ok');
+});
+
 // Add api router
 app.use('/api/v1', apiRouterV1);
 

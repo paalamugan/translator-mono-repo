@@ -2,7 +2,6 @@
   "name": "translator-mono-repo",
   "version": "1.0.0",
   "description": "Translator Mono repo",
-  "main": "server/dist/index.js",
   "scripts": {
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
@@ -20,34 +19,29 @@
     "type": "git",
     "url": "git+https://github.com/paalamugan/translator-mono-repo.git"
   },
-  "keywords": [],
+  "keywords": [
+    "vercel",
+    "svelte",
+    "node",
+    "express",
+    "typescript",
+    "translator",
+    "mono-repo"
+  ],
   "author": "Paalamugan",
   "license": "ISC",
   "engines": {
     "node": ">=17.0.0",
     "npm": ">=8.0.0"
   },
-  "_moduleAliases": {
-    "@services": "server/dist/services",
-    "@repos": "server/dist/repos",
-    "@entities": "server/dist/entities",
-    "@shared": "server/dist/shared",
-    "@server": "server/dist/server",
-    "@routes": "server/dist/routes",
-    "@config": "server/dist/config",
-    "logger": "server/dist/logger"
-  },
   "workspaces": [
     "client",
-    "Server"
+    "server"
   ],
   "bugs": {
     "url": "https://github.com/paalamugan/translator-mono-repo/issues"
   },
   "homepage": "https://github.com/paalamugan/translator-mono-repo#readme",
-  "dependencies": {
-    "module-alias": "^2.2.2"
-  },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
   }

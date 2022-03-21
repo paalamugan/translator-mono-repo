@@ -1,3 +1,3 @@
 import Jetlogger from 'jet-logger';
 
-export default  Jetlogger;
+export default Jetlogger;
