@@ -1,7 +1,7 @@
 {
   "name": "translator-mono-repo",
   "version": "1.0.0",
-  "description": "Translator Mono repo",
+  "description": "This application helps translator from one language text to multiple languages",
   "scripts": {
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
@@ -10,8 +10,8 @@
     "start:client": "cd client && npm run preview",
     "start:server": "cd server && npm run start",
     "dev": "run-p dev:*",
-    "start": "run-s start:server",
     "build": "run-s build:*",
+    "start": "run-s build:client start:server",
     "local": "npm run build && vercel",
     "deploy": "npm run build && vercel --prod"
   },
