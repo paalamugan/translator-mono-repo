@@ -31,6 +31,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const command_line_args_1 = __importDefault(require("command-line-args"));
 const _logger_1 = __importDefault(require("@logger"));
@@ -44,10 +45,16 @@ const _logger_1 = __importDefault(require("@logger"));
             type: String,
         },
     ]);
+    const defaultEnv = path_1.default.resolve('.env');
+    const isEnvPathExist = fs_1.default.existsSync(defaultEnv);
+    if (options.env === 'development' && !isEnvPathExist) {
+        _logger_1.default.warn('Please create ".env" file in root directory. So you can easily change environment variable values in development mode.');
+    }
+    const configPath = isEnvPathExist ? defaultEnv : path_1.default.join(__dirname, `env/${options.env}.env`);
     // Set the env file
     const result2 = dotenv_1.default.config({
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        path: path_1.default.join(__dirname, `env/${options.env}.env`),
+        path: configPath,
     });
     Promise.resolve().then(() => __importStar(require('../config'))).then((config) => {
         if (!config.default.microsoftTranslateAppId) {

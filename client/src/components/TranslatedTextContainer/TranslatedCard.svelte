@@ -26,7 +26,7 @@
             on:mouseleave={() => {
               setTimeout(() => {
                 isCopied = false;
-              }, 1000);
+              }, 500);
             }}
           >
             <Clipboard

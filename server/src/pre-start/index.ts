@@ -4,6 +4,7 @@
  */
 
 import path from 'path';
+import fs from 'fs';
 import dotenv from 'dotenv';
 import commandLineArgs from 'command-line-args';
 import logger from '@logger';
@@ -19,10 +20,19 @@ import logger from '@logger';
         },
     ]);
 
+    const defaultEnv = path.resolve('.env');
+    const isEnvPathExist = fs.existsSync(defaultEnv);
+
+    if (options.env === 'development' && !isEnvPathExist) {
+        logger.warn('Please create ".env" file in root directory. So you can easily change environment variable values in development mode.');
+    }
+
+    const configPath = isEnvPathExist ? defaultEnv : path.join(__dirname, `env/${options.env}.env`);
+
     // Set the env file
     const result2 = dotenv.config({
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        path: path.join(__dirname, `env/${options.env}.env`),
+        path: configPath,
     });
 
     import('../config').then((config) => {

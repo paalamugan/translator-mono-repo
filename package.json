@@ -12,8 +12,8 @@
     "dev": "run-p dev:*",
     "start": "run-s start:server",
     "build": "run-s build:*",
-    "local": "vercel",
-    "deploy": "vercel --prod"
+    "local": "npm run build && vercel",
+    "deploy": "npm run build && vercel --prod"
   },
   "repository": {
     "type": "git",

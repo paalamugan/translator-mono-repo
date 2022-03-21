@@ -18,7 +18,7 @@
   let selectedToLang = null;
   let translateText: string = "";
   let translatedCards: any = [];
-  let detectedLangLabel: string = "";
+  let detectedLangText: string = "";
 
   const onChangeTranslate = () => {
     if (!selectedToLang || !selectedFromLang || !translateText) return;
@@ -31,10 +31,9 @@
 
         const data = await getTranslatedData(selectedFromLang.value, toLang.value, translateText);
 
-        const detectedLangText = LANG[data.detectedLang];
-        if (!detectedLangLabel && data.detectedLang) {
-          selectedFromLang.label = `${selectedFromLang.label} (${detectedLangText})`;
-          detectedLangLabel = detectedLangText;
+        detectedLangText = data.detectedLang ? LANG[data.detectedLang] : "";
+        if (detectedLangText) {
+          selectedFromLang.label = `${LANG[selectedFromLang.value]} (${detectedLangText})`;
         }
 
         translatedCards[index] = {
@@ -67,12 +66,13 @@
   const handleTranslateInput = debounce((event) => {
     translateText = event.target.value;
     onChangeTranslate();
-  }, 500);
+  }, 1000);
 </script>
 
 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-start mt-6 gap-14 mb-6">
   <TranslateSelectOption
     label="Translate From"
+    {detectedLangText}
     items={langFromLists}
     value={selectedFromLang}
     onSelect={handleFromSelect}
