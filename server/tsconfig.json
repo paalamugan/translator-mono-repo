@@ -88,8 +88,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "spec/**/*.ts",
-    "src/index.ts"
+    "spec/**/*.ts"
   ],
   "exclude": [
     "src/public/"
