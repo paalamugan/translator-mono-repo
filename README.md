@@ -1,5 +1,5 @@
 # Translator Application
-    - This application helps translator from one language text to multiple languages.
+It helps to translate from one language to multiple languages.
     
 ## Get Started
 
