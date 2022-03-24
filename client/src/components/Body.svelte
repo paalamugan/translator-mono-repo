@@ -22,7 +22,7 @@
 
   const onChangeTranslate = () => {
     if (!selectedToLang || !selectedFromLang || !translateText) return;
-
+    translatedCards = [];
     selectedToLang.forEach((toLang, index) => {
       void (async () => {
         translatedCards[index] = {

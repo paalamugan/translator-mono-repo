@@ -64,6 +64,7 @@ app.use((err, _req, res, _next) => {
 // Set static dir
 const staticDir = path_1.default.join(__dirname, '..', '..', 'client', 'build');
 app.use(express_1.default.static(staticDir));
+app.use('/', express_1.default.static(staticDir));
 // Serve index.html file
 app.get('*', (_, res) => {
     res.sendFile('index.html', { root: staticDir });

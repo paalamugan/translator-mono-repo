@@ -76,6 +76,8 @@ app.use((err: Error | CustomError, _req: Request, res: Response, _next: NextFunc
 const staticDir = path.join(__dirname, '..', '..', 'client', 'build');
 app.use(express.static(staticDir));
 
+app.use('/', express.static(staticDir));
+
 // Serve index.html file
 app.get('*', (_: Request, res: Response) => {
     res.sendFile('index.html', { root: staticDir });
